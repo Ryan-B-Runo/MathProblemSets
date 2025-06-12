@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="https://latex.vercel.app/style.css">
+  <title>Home</title>
+</head>
+<body>
+    <h1>Math Problem Sets</h1>
+
+    <div style="text-align: center">
+        <u id="dark-mode-toggle"><b>Dark Mode</b></u><br>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                // Select the toggle button
+                const darkModeToggle = document.querySelector("#dark-mode-toggle");
+
+                // Function to enable dark mode
+                const enableDarkMode = () => {
+                    document.body.classList.add("latex-dark");
+                    localStorage.setItem("darkMode", "enabled");
+                };
+
+                // Function to disable dark mode
+                const disableDarkMode = () => {
+                    document.body.classList.remove("latex-dark");
+                    localStorage.setItem("darkMode", "disabled");
+                };
+
+                // Check localStorage when the page loads
+                if (localStorage.getItem("darkMode") === "enabled") {
+                    enableDarkMode();
+                }
+
+                // Add event listener to the toggle button
+                darkModeToggle.addEventListener('click', () => {
+                    // Check the current state *before* toggling
+                    const isDarkModeNow = document.body.classList.contains("latex-dark");
+
+                    if (isDarkModeNow) {
+                        disableDarkMode();
+                    } else {
+                        enableDarkMode();
+                    }
+                });
+            });
+        </script>
+        <h2>Subjects</h2>
+        <ul>
+            <li><a href="CollegeAlgebra.html">College Algebra</a></li>
+            <li>Pre-Calculus</li>
+            <li>Calculus I</li>
+            <li>Calculus II</li>
+            <li>Calculus III</li>
+        </ul>
+    </div>
+</body>
+</html>

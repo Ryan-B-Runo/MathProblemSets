@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="https://latex.vercel.app/style.css">
+  <title>Home</title>
+</head>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<body>
+  <h1>College Algebra</h1>
+
+  <div style="text-align: center">
+    <a href="index.html"><b>Home</b></a><br>
+    <u id="dark-mode-toggle"><b>Dark Mode</b></u>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        // Select the toggle button
+        const darkModeToggle = document.querySelector("#dark-mode-toggle");
+
+        // Function to enable dark mode
+        const enableDarkMode = () => {
+          document.body.classList.add("latex-dark");
+          localStorage.setItem("darkMode", "enabled");
+        };
+
+        // Function to disable dark mode
+        const disableDarkMode = () => {
+          document.body.classList.remove("latex-dark");
+          localStorage.setItem("darkMode", "disabled");
+        };
+
+        // Check localStorage when the page loads
+        if (localStorage.getItem("darkMode") === "enabled") {
+          enableDarkMode();
+        }
+
+        // Add event listener to the toggle button
+        darkModeToggle.addEventListener('click', () => {
+          // Check the current state *before* toggling
+          const isDarkModeNow = document.body.classList.contains("latex-dark");
+
+          if (isDarkModeNow) {
+            disableDarkMode();
+          } else {
+            enableDarkMode();
+          }
+        });
+      });
+    </script>
+    <h2>Programs</h2>
+    <ol>
+      <li>Slope Between Two Points</li>
+      <li>Midpoint of Two Points</li>
+      <li>Distance Between Two Points</li>
+      <li><a href="CA1_LineEqn.html">Point-Slope to Slope-Intercept Form</a></li>
+      <li>Convert to Center-Radius form of Circle</li>
+      <li>Parabola Vertex Form Transformations</li>
+      <li>Parabola Vertex form to Standard Form</li>
+      <li>Parabola Standard Form to Vertex Form</li>
+      <li>Log and Exponential</li>
+      <li>f</li>
+      <li>f</li>
+      <li>f</li>
+    </ol>
+  </div>
+  </body>
+</html>

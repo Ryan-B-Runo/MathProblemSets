@@ -1,0 +1,17 @@
+div ul{
+    padding-left: 20px; /* Or your desired value */
+    text-align: left; /* Important: Reset text-align for the list content */
+    display: inline-block; /* Optional: Helps center the ul itself if needed */
+}
+
+div ol{
+    padding-left: 20px; /* Or your desired value */
+    text-align: left; /* Important: Reset text-align for the list content */
+    display: inline-block; /* Optional: Helps center the ul itself if needed */
+}
+
+/*form{*/
+/*    padding-left: 20px; !* Or your desired value *!*/
+/*    text-align: left; !* Important: Reset text-align for the list content *!*/
+/*    display: inline-block; !* Optional: Helps center the ul itself if needed *!*/
+/*}*/
