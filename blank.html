@@ -11,7 +11,8 @@
 <h1>[Title]</h1>
 
 <div style="text-align: center">
-    <a href="index.html"><b>Home</b></a>
+    <a href="index.html"><b>Home</b></a><br>
+    <a href="index.html"><b>[Previous Subject]</b></a> <!-- Edit this################################## -->
     <br>
     <u id="dark-mode-toggle"><b>Dark Mode</b></u>
     <script>
@@ -52,8 +53,8 @@
 </div>
 <h2>Description</h2>
 <article class="indent-pars">
-    [...]
-    <br>
+    This is a blank template to make new programs. Copy the HTML into a new file and edit the previous subject button, title, description, the last script element, and the problem instructions.
+    <br><br>
     To download or print the problem set or answer key, click one of the export buttons and press <kbd>Ctrl</kbd>+<kbd>P</kbd>. You can print, or save the document as a PDF. Disable print headers for a cleaner document.
 </article>
 <form>
@@ -125,18 +126,21 @@
         .querySelector("#generator")
         .addEventListener('click', () => {
             event.preventDefault()// prevent refresh when form is submitted
-            let n = document.querySelector("#numProb").value;
-            if (n <= 1000 && n >= 1) {
+            let n = document.querySelector("#numProb").value;//start editing here###########################################################################
+            if (n <= 1000 && n >= 1) {// can change these
                 //algorithm here
+                for (let i = 0; i < n; i++) {
+                    //problem and answer elements go in the list
+                    const problem = document.createElement('li');
+                    const answer = document.createElement('li');
+                    answer.style.color = "red";
+                    //continue here
 
+                }
             } else {
-                alert("You can only generate between 1 and [x] problems.");
+                alert("You can only generate between 1 and [x] problems.");//change this###########################################################################
             }
         });
 </script>
-<h2>The Algorithm</h2>
-<article class="indent-pars">
-    [optional]
-</article>
 </body>
 </html>
