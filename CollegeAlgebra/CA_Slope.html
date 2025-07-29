@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="../stylesheet.css">
   <link rel="stylesheet" href="https://latex.vercel.app/style.css">
-  <title>Midpoint between Two Points</title>
+  <title>Slope Formula</title>
 </head>
 <body>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<h1>Midpoint Between Two Points</h1>
+<h1>Slope Formula</h1>
 
 <div style="text-align: center">
   <a href="../index.html"><b>Home</b></a><br>
@@ -53,7 +53,7 @@
 </div>
 <h2>Description</h2>
 <article class="indent-pars">
-  Generates two ordered pairs, and their midpoint in the answer key.
+  Generates two ordered pairs and the slope between them in the answer key.
   <br><br>
   To download or print the problem set or answer key, click one of the export buttons and press <kbd>Ctrl</kbd>+<kbd>P</kbd>. You can print, or save the document as a PDF. Disable print headers for a cleaner document.
 </article>
@@ -67,12 +67,12 @@
 <button id="exportAnswers">Export Answers</button>
 
 <div id="content">
-  <h4>Find the midpoint between the two given points. Write your answer as an ordered pair.</h4>
+  <h4>Find the slope between the two points.</h4>
   <ol id="problems"></ol>
 </div>
 
 <div id="contentAnswers" style="display: none">
-  <h4>Find the midpoint between the two given points. Write your answer as an ordered pair.</h4>
+  <h4>Find the slope between the two points.</h4>
   <h4 style="color: red;">Answers</h4>
   <ol id="problemsAnswers"></ol>
 </div>
@@ -137,7 +137,7 @@
                 const rands = [randRange(-10, 10), randRange(-10, 10), randRange(-10, 10), randRange(-10, 10)];
                 problem.innerHTML = "\\((" + rands[0] + "," + rands[1] + ")\\) and \\((" + rands[2] + "," + rands[3] + ")\\)";
 
-                answer.innerHTML = "\\((" + simplifyFractionLaTeX(rands[0]+rands[2], 2) + "," + simplifyFractionLaTeX(rands[1]+rands[3], 2) + ")\\)";
+                answer.innerHTML = "\\( " + simplifyFractionLaTeX((rands[3]-rands[1]), (rands[2]-rands[0])) + "\\)";
 
                 problems.appendChild(problem);
                 answers.appendChild(answer);

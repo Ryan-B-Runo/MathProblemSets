@@ -7,7 +7,7 @@ function gcd(a, b) {
   if(b === 0) {
     return a;
   }
-  return gcd(a, a % b);
+  return gcd(b, a % b);
 }
 
 
@@ -19,7 +19,7 @@ function simplifyFractionLaTeX(numerator, denominator){
   const newDenominator = denominator / d;
 
   if(newDenominator === 1) {
-    return numerator;
+    return newNumerator;
   }else if (newDenominator === 0) {
     return "undefined";
   }

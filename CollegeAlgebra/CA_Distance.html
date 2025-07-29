@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="stylesheet.css"><!-- Change to ../stylesheet.css if in a directory -->
+    <link rel="stylesheet" href="../stylesheet.css">
     <link rel="stylesheet" href="https://latex.vercel.app/style.css">
-    <title>Blank</title><!-- Edit this################################## -->
+    <title>Distance Formula</title>
 </head>
 <body>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<h1>[Title]</h1>                                        <!-- Edit this################################## -->
+<h1>Distance Formula</h1>
 
 <div style="text-align: center">
-    <a href="index.html"><b>Home</b></a><br><!-- Edit this################################## -->
-    <a href="index.html"><b>[Previous Subject]</b></a>  <!-- Edit this################################## -->
+    <a href="../index.html"><b>Home</b></a><br>
+    <a href="../CollegeAlgebra.html"><b>College Algebra</b></a>
     <br>
     <u id="dark-mode-toggle"><b>Dark Mode</b></u>
     <script>
@@ -52,14 +52,17 @@
     </script>
 </div>
 <h2>Description</h2>
-<article class="indent-pars"><!-- Edit this################################## -->
-    This is a blank template to make new programs. Copy the HTML into a new file and edit the previous subject button, title, description, the last script element, and the problem instructions.
+<article class="indent-pars">
+    Generates two ordered pairs, and the distance between them in the answer key. <br><br><br>
+
+    not finished yet.
+
     <br><br>
     To download or print the problem set or answer key, click one of the export buttons and press <kbd>Ctrl</kbd>+<kbd>P</kbd>. You can print, or save the document as a PDF. Disable print headers for a cleaner document.
 </article>
 <form>
-    <label for="numProb"><b>Number of Problems (1-[x])</b></label><br><!-- Edit this################################## -->
-    <input type="number" id="numProb" min="1" max="1000"><br><br><!-- Edit this################################## -->
+    <label for="numProb"><b>Number of Problems (1-1000)</b></label><br>
+    <input type="number" id="numProb" min="1" max="1000"><br><br>
     <input type="submit" value="Generate" id="generator">
 </form>
 
@@ -67,12 +70,12 @@
 <button id="exportAnswers">Export Answers</button>
 
 <div id="content">
-    <h4>[problem instructions]</h4><!-- Edit this################################## -->
+    <h4>Find the distance between the two points.</h4>
     <ol id="problems"></ol>
 </div>
 
 <div id="contentAnswers" style="display: none">
-    <h4>[problem instructions]</h4><!-- Edit this################################## -->
+    <h4>Find the distance between the two points.</h4>
     <h4 style="color: red;">Answers</h4>
     <ol id="problemsAnswers"></ol>
 </div>
