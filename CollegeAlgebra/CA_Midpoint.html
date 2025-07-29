@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="https://latex.vercel.app/style.css">
+  <title>Midpoint between Two Points</title>
+</head>
+<body>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<h1>Midpoint Between Two Points</h1>
+
+<div style="text-align: center">
+  <a href="../index.html"><b>Home</b></a><br>
+  <a href="../CollegeAlgebra.html"><b>College Algebra</b></a>
+  <br>
+  <u id="dark-mode-toggle"><b>Dark Mode</b></u>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // Select the toggle button
+      const darkModeToggle = document.querySelector("#dark-mode-toggle");
+
+      // Function to enable dark mode
+      const enableDarkMode = () => {
+        document.body.classList.add("latex-dark");
+        localStorage.setItem("darkMode", "enabled");
+      };
+
+      // Function to disable dark mode
+      const disableDarkMode = () => {
+        document.body.classList.remove("latex-dark");
+        localStorage.setItem("darkMode", "disabled");
+      };
+
+      // Check localStorage when the page loads
+      if (localStorage.getItem("darkMode") === "enabled") {
+        enableDarkMode();
+      }
+
+      // Add event listener to the toggle button
+      darkModeToggle.addEventListener('click', () => {
+        // Check the current state *before* toggling
+        const isDarkModeNow = document.body.classList.contains("latex-dark");
+
+        if (isDarkModeNow) {
+          disableDarkMode();
+        } else {
+          enableDarkMode();
+        }
+      });
+    });
+  </script>
+</div>
+<h2>Description</h2>
+<article class="indent-pars">
+  Generates two ordered pairs, and their midpoint in the answer key.
+  <br>
+  To download or print the problem set or answer key, click one of the export buttons and press <kbd>Ctrl</kbd>+<kbd>P</kbd>. You can print, or save the document as a PDF. Disable print headers for a cleaner document.
+</article>
+<form>
+  <label for="numProb"><b>Number of Problems (1-1000)</b></label><br>
+  <input type="number" id="numProb" min="1" max="1000"><br><br>
+  <input type="submit" value="Generate" id="generator">
+</form>
+
+<button id="exportProblems">Export Problems</button>
+<button id="exportAnswers">Export Answers</button>
+
+<div id="content">
+  <h4>Find the midpoint between the two given points. Write your answer as an ordered pair.</h4>
+  <ol id="problems"></ol>
+</div>
+
+<div id="contentAnswers" style="display: none">
+  <h4>Find the midpoint between the two given points. Write your answer as an ordered pair.</h4>
+  <h4 style="color: red;">Answers</h4>
+  <ol id="problemsAnswers"></ol>
+</div>
+
+<script>
+  const exportProblemsButton = document.getElementById('exportProblems');
+  const exportAnswersButton = document.getElementById('exportAnswers');
+  exportProblemsButton.addEventListener('click', () => {
+    const toConvert = document.getElementById('content').innerHTML;
+    const newWindow = window.open('', 'PortionWindow', 'width=1000,height=1000,resizable,scrollbars');
+    if (newWindow) {
+      // deal with CSS
+      Array.from(document.getElementsByTagName('link')).forEach(link => {
+        if (link.rel === 'stylesheet') {
+          newWindow.document.write(`<link rel="stylesheet" href="${link.href}">`);
+        }
+      });
+      // Copy the content to the new window, including the MathJax script.
+      newWindow.document.write('<head><script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"><\/script><title>Problem Set<\/title><\/head>');
+      newWindow.document.write(toConvert);
+      newWindow.document.close();
+      newWindow.focus();
+    } else {
+      alert("Allow pop-ups on this site to export content.")
+    }
+  });
+  exportAnswersButton.addEventListener('click', () => {
+    const toConvert = document.getElementById('contentAnswers').innerHTML;
+    const newWindow = window.open('', 'PortionWindow', 'width=1000,height=1000,resizable,scrollbars');
+    if (newWindow) {
+      // deal with CSS
+      Array.from(document.getElementsByTagName('link')).forEach(link => {
+        if (link.rel === 'stylesheet') {
+          newWindow.document.write(`<link rel="stylesheet" href="${link.href}">`);
+        }
+      });
+      // Copy the content to the new window, including the MathJax script.
+      newWindow.document.write('<head><script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"><\/script><title>Problem Set Answers<\/title><\/head>');
+      newWindow.document.write(toConvert);
+      newWindow.document.close();
+      newWindow.focus();
+    } else {
+      alert("Allow pop-ups on this site to export content.")
+    }
+  });
+</script>
+<script>
+  const problems = document.getElementById("problems");
+  const answers = document.getElementById("problemsAnswers");
+  document
+          .querySelector("#generator")
+          .addEventListener('click', () => {
+            event.preventDefault()// prevent refresh when form is submitted
+            let n = document.querySelector("#numProb").value;
+            if (n <= 1000 && n >= 1) {// can change these
+              //algorithm here
+              for (let i = 0; i < n; i++) {
+                //problem and answer elements go in the list
+                const problem = document.createElement('li');
+                const answer = document.createElement('li');
+                answer.style.color = "red";
+
+                //four random numbers
+                const rands = [randRange(-10, 10), randRange(-10, 10), randRange(-10, 10), randRange(-10, 10)];
+                problem.innerHTML = "\\((" + rands[0] + "," + rands[1] + ")\\) and \\((" + rands[2] + "," + rands[3] + ")\\)";
+
+                answer.innerHTML = "\\((" + simplifyFractionLaTeX(rands[0]+rands[2], 2) + "," + simplifyFractionLaTeX(rands[1]+rands[3], 2) + ")\\)";
+
+                problems.appendChild(problem);
+                answers.appendChild(answer);
+
+                if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+                  MathJax.typesetPromise([problem]).catch(function (err) {
+                    console.error('MathJax typesetPromise failed: ' + err.message);
+                  });
+                }
+              }
+            } else {
+              alert("You can only generate between 1 and 1000 problems.");
+            }
+
+            function randRange(min, max){
+              return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min);
+            }
+
+            function gcd(a, b) {
+              if(b === 0) {
+                return a;
+              }
+              return gcd(b, a % b);
+            }
+
+            function simplifyFractionLaTeX(numerator, denominator){
+              const d = gcd(numerator, denominator);
+              const newNumerator = numerator / d;
+              const newDenominator = denominator / d;
+
+              if(newDenominator === 1) {
+                return numerator;
+              }else if (newDenominator === 0) {
+                return "undefined";
+              }
+              if(newNumerator/newDenominator < 0) {
+                return "-\\frac{" + Math.abs(newNumerator) + "}{" + Math.abs(newDenominator) + "}";
+              }
+              return "\\frac{" + Math.abs(newNumerator) + "}{" + Math.abs(newDenominator) + "}";
+            }
+
+          });
+</script>
+</body>
+</html>
