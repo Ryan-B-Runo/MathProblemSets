@@ -54,7 +54,7 @@
 <h2>Description</h2>
 <article class="indent-pars">
     Generates a given amount of line equations in point-slope form, and their corresponding equations in slope-intercept form in the answer key.
-    <br>
+    <br><br>
     To download or print the problem set or answer key, click one of the export buttons and press <kbd>Ctrl</kbd>+<kbd>P</kbd>. You can print, or save the document as a PDF. Disable print headers for a cleaner document.
 </article>
 <form>
@@ -135,10 +135,31 @@
                     answer.style.color = "red";
 
                     //three random numbers
-                    const rands = [Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11)];
+                    const rands = [randRange(-10, 10), randRange(-10, 10), randRange(-10, 10)];
                     const y_int = -1 * rands[2] * rands[0] + rands[1]; // b=-mx_1+y_1
 
-                    problem.innerHTML = "\\( y - " + rands[1] + " = " + rands[2] + "\\left(x - " + rands[0] + " \\right)\\)";
+                    //format equations
+
+                     var leftSide;
+                     var rightSide = rands[2] + "\\left(x - " + rands[0] + " \\right)\\)";
+
+                    if(rands[1] === 0){
+                        leftSide = "\\( y = ";
+                    }else if(rands[1] < 0){
+                        leftSide = "\\( y + " + Math.abs(rands[1]) + " = ";
+                    }else{
+                        leftSide = "\\( y - " + rands[1] + " = ";
+                    }
+
+                    if(rands[0] === 0){
+                        rightSide = rands[2] + " x " + "\\)";
+                    }else if(rands[0] < 0){
+                        rightSide = rands[2] + "\\left(x + " + Math.abs(rands[0]) + " \\right)\\)"
+                    }else{
+                        rightSide = rands[2] + "\\left(x - " + rands[0] + " \\right)\\)"
+                    }
+
+                    problem.innerHTML = (leftSide + rightSide);
 
                     if(rands[2] === 0){
                         if(y_int === 0){
@@ -176,6 +197,11 @@
             } else {
                 alert("You can only generate between 1 and 1000 problems.");
             }
+
+            function randRange(min, max){
+                return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min);
+            }
+
         });
 </script>
 </body>
