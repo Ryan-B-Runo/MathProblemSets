@@ -53,12 +53,10 @@
 </div>
 <h2>Description</h2>
 <article class="indent-pars">
-    Generates two ordered pairs, and the distance between them in the answer key. <br><br><br>
-
-    not finished yet.
-
+    Generates two ordered pairs, and the distance between them in the answer key.
     <br><br>
     To download or print the problem set or answer key, click one of the export buttons and press <kbd>Ctrl</kbd>+<kbd>P</kbd>. You can print, or save the document as a PDF. Disable print headers for a cleaner document.
+    <br><br>
 </article>
 <form>
     <label for="numProb"><b>Number of Problems (1-1000)</b></label><br>
@@ -137,14 +135,14 @@
                     const problem = document.createElement('li');
                     const answer = document.createElement('li');
                     answer.style.color = "red";
-                    //continue here
 
                     //four random numbers
                     const rands = [randRange(-10, 10), randRange(-10, 10), randRange(-10, 10), randRange(-10, 10)];
                     problem.innerHTML = "\\((" + rands[0] + "," + rands[1] + ")\\) and \\((" + rands[2] + "," + rands[3] + ")\\)";
 
-                    answer.innerHTML = "\\(" + sqrtSimplifyLaTeX((Math.abs(rands[2]-rands[0]))^2 + (Math.abs(rands[3]-rands[1]))^2) + "\\)";
+                    answer.innerHTML = "\\(" + sqrtSimplifyLaTeX(Math.pow(rands[2]-rands[0], 2) + Math.pow(rands[3]-rands[1], 2)) + "\\)";
 
+                    console.log("ffff")
                     problems.appendChild(problem);
                     answers.appendChild(answer);
 
@@ -163,21 +161,30 @@
             }
 
             function sqrtSimplifyLaTeX(n){
-                if(n < 1089 && n > 0){
-                    perfectSquares = [1024, 961, 900, 841, 784, 729, 676, 625, 576, 529, 484, 441, 400, 361, 324, 289, 256, 225, 196, 169, 144, 121, 100, 81, 64, 49, 36, 25, 16, 9, 4, 1];
-                    let square;
-                    let squared;
+                if(n < 0){
+                    return "[INVALID INPUT]";
+                }
+                if(n === 0){
+                    return 0;
+                }
+                    let out = 1;
+                    let inside = n;
 
-                    for (let i = 0; i < n; i++) {
-                        if(n % perfectSquares[i] === 0) {
-                            square = perfectSquares[i];
-                            squared = Math.sqrt(perfectSquares[i]);
+                    for(let i = Math.floor(Math.sqrt(n)); i > 1; i--){
+                        const square = i * i;
+                        if(inside % square === 0){
+                            out *= i;
+                            inside /= square;
                             break;
                         }
                     }
-                    return squared + "\\sqrt{" + n/square + "}";
-                }
-                return "[INVALID INPUT SIZE]"
+                    if(out === 1){
+                        return "\\sqrt{" + inside + "}";
+                    }
+                    if(inside === 1){
+                        return `${out}`;
+                    }
+                    return out + "\\sqrt{" + inside + "}";
             }
         });
 </script>

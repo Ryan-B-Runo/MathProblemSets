@@ -36,24 +36,30 @@ function randRange(min, max){
   return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min);
 }
 
-
-this is an efficient algorithm that runs in O(1) but has a max input of 1088.
-we will probably never need such a large input size, but add more perfect squares to the array if necesary.
-
+return the LaTeX form of the square root of n, simplified
 function sqrtSimplifyLaTeX(n){
-    if(n < 1089 && n > 0){
-        perfectSquares = [1024, 961, 900, 841, 784, 729, 676, 625, 576, 529, 484, 441, 400, 361, 324, 289, 256, 225, 196, 169, 144, 121, 100, 81, 64, 49, 36, 25, 16, 9, 4, 1];
-        let square;
-        let squared;
+    if(n < 0){
+        return "[INVALID INPUT]";
+    }
+    if(n === 0){
+        return 0;
+    }
+        let out = 1;
+        let inside = n;
 
-        for (let i = 0; i < n; i++) {
-            if(n % perfectSquares[i] === 0) {
-                square = perfectSquares[i];
-                squared = Math.sqrt(perfectSquares[i]);
+        for(let i = Math.floor(Math.sqrt(n)); i > 1; i--){
+            const square = i * i;
+            if(inside % square === 0){
+                out *= i;
+                inside /= square;
                 break;
             }
         }
-        return squared + "\\sqrt{" + n/square + "}";
-    }
-    return "[INVALID INPUT SIZE]"
+        if(out === 1){
+            return "\\sqrt{" + inside + "}";
+        }
+        if(inside === 1){
+            return `${out}`;
+        }
+        return out + "\\sqrt{" + inside + "}";
 }
