@@ -120,6 +120,7 @@
         }
     });
     </script>
+<script src="../commonFunctions.js"></script>
     <script>
     const problems = document.getElementById("problems");
     const answers = document.getElementById("problemsAnswers");
@@ -198,11 +199,6 @@
             } else {
                 alert("You can only generate between 1 and 1000 problems.");
             }
-
-            function randRange(min, max){
-                return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min);
-            }
-
         });
 </script>
 </body>

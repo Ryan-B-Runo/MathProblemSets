@@ -1,0 +1,60 @@
+
+function gcd(a, b) {
+    if(b === 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+//return LaTeX string of simplified fraction (gcd() function required)
+
+function simplifyFractionLaTeX(numerator, denominator){
+    const d = gcd(numerator, denominator);
+    const newNumerator = numerator / d;
+    const newDenominator = denominator / d;
+
+    if(newDenominator === 1) {
+        return newNumerator;
+    }else if (newDenominator === 0) {
+        return "undefined";
+    }
+    if(newNumerator/newDenominator < 0) {
+        return "-\\frac{" + Math.abs(newNumerator) + "}{" + Math.abs(newDenominator) + "}";
+    }
+    return "\\frac{" + Math.abs(newNumerator) + "}{" + Math.abs(newDenominator) + "}";
+}
+
+//return random integer between two numbers
+
+function randRange(min, max){
+    return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min);
+}
+
+//return the LaTeX form of the square root of n, simplified
+
+function sqrtSimplifyLaTeX(n){
+    if(n < 0){
+        return "[INVALID INPUT]";
+    }
+    if(n === 0){
+        return 0;
+    }
+    let out = 1;
+    let inside = n;
+
+    for(let i = Math.floor(Math.sqrt(n)); i > 1; i--){
+        const square = i * i;
+        if(inside % square === 0){
+            out *= i;
+            inside /= square;
+            break;
+        }
+    }
+    if(out === 1){
+        return "\\sqrt{" + inside + "}";
+    }
+    if(inside === 1){
+        return `${out}`;
+    }
+    return out + "\\sqrt{" + inside + "}";
+}

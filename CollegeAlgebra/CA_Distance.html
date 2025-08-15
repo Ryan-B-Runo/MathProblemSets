@@ -120,6 +120,7 @@
         }
     });
 </script>
+<script src="../commonFunctions.js"></script>
 <script>
     const problems = document.getElementById("problems");
     const answers = document.getElementById("problemsAnswers");
@@ -154,37 +155,6 @@
                 }
             } else {
                 alert("You can only generate between 1 and 1000 problems.");//change this###########################################################################
-            }
-
-            function randRange(min, max){
-                return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min);
-            }
-
-            function sqrtSimplifyLaTeX(n){
-                if(n < 0){
-                    return "[INVALID INPUT]";
-                }
-                if(n === 0){
-                    return 0;
-                }
-                    let out = 1;
-                    let inside = n;
-
-                    for(let i = Math.floor(Math.sqrt(n)); i > 1; i--){
-                        const square = i * i;
-                        if(inside % square === 0){
-                            out *= i;
-                            inside /= square;
-                            break;
-                        }
-                    }
-                    if(out === 1){
-                        return "\\sqrt{" + inside + "}";
-                    }
-                    if(inside === 1){
-                        return `${out}`;
-                    }
-                    return out + "\\sqrt{" + inside + "}";
             }
         });
 </script>

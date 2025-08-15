@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="stylesheet.css"><!-- Change to ../stylesheet.css if in a directory -->
+  <link rel="stylesheet" href="../stylesheet.css"><!-- Change to ../stylesheet.css if in a directory -->
   <link rel="stylesheet" href="https://latex.vercel.app/style.css">
   <title>Simplify a Square Root</title>
 </head>
@@ -68,7 +68,7 @@
 <button id="exportAnswers">Export Answers</button>
 
 <div id="content">
-  <h4>Simplify the following square roots.</h4><!-- Edit this################################## -->
+  <h4>Simplify the following square roots.</h4>
   <ol id="problems"></ol>
 </div>
 
@@ -120,6 +120,7 @@
     }
   });
 </script>
+<script src="../commonFunctions.js"></script>
 <script>
   const problems = document.getElementById("problems");
   const answers = document.getElementById("problemsAnswers");
@@ -128,18 +129,19 @@
           .addEventListener('click', () => {
             event.preventDefault()// prevent refresh when form is submitted
             let n = document.querySelector("#numProb").value;
-            if (n <= 100 && n >= 1) {// can change these
-              //algorithm here
+            if (n <= 100 && n >= 1) {
+
               for (let i = 0; i < n; i++) {
                 //problem and answer elements go in the list
                 const problem = document.createElement('li');
                 const answer = document.createElement('li');
                 answer.style.color = "red";
-                //continue here
 
-                
+                const rand = randRange(0, 100);
 
-                //Append "\\(" and "\\)" to the start and end of your strings so MathJax renders it correctly
+                problem.innerHTML = "\\(\\sqrt{" + rand + "}\\)";
+
+                answer.innerHTML = "\\(" + sqrtSimplifyLaTeX(rand) + "\\)";
 
                 problems.appendChild(problem);
                 answers.appendChild(answer);

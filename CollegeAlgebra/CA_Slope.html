@@ -120,6 +120,7 @@
     }
   });
 </script>
+<script src="../commonFunctions.js"></script>
 <script>
   const problems = document.getElementById("problems");
   const answers = document.getElementById("problemsAnswers");
@@ -152,34 +153,6 @@
             } else {
               alert("You can only generate between 1 and 1000 problems.");
             }
-
-            function randRange(min, max){
-              return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min);
-            }
-
-            function gcd(a, b) {
-              if(b === 0) {
-                return a;
-              }
-              return gcd(b, a % b);
-            }
-
-            function simplifyFractionLaTeX(numerator, denominator){
-              const d = gcd(numerator, denominator);
-              const newNumerator = numerator / d;
-              const newDenominator = denominator / d;
-
-              if(newDenominator === 1) {
-                return newNumerator;
-              }else if (newDenominator === 0) {
-                return "undefined";
-              }
-              if(newNumerator/newDenominator < 0) {
-                return "-\\frac{" + Math.abs(newNumerator) + "}{" + Math.abs(newDenominator) + "}";
-              }
-              return "\\frac{" + Math.abs(newNumerator) + "}{" + Math.abs(newDenominator) + "}";
-            }
-
           });
 </script>
 </body>
