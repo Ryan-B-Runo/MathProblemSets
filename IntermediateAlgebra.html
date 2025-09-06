@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="https://latex.vercel.app/style.css">
+  <title>Intermediate Algebra Problem Sets</title>
+</head>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<body>
+<h1>Intermediate Algebra</h1>
+
+<div style="text-align: center">
+  <a href="index.html"><b>Home</b></a><br>
+  <u id="dark-mode-toggle"><b>Dark Mode</b></u>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // Select the toggle button
+      const darkModeToggle = document.querySelector("#dark-mode-toggle");
+
+      // Function to enable dark mode
+      const enableDarkMode = () => {
+        document.body.classList.add("latex-dark");
+        localStorage.setItem("darkMode", "enabled");
+      };
+
+      // Function to disable dark mode
+      const disableDarkMode = () => {
+        document.body.classList.remove("latex-dark");
+        localStorage.setItem("darkMode", "disabled");
+      };
+
+      // Check localStorage when the page loads
+      if (localStorage.getItem("darkMode") === "enabled") {
+        enableDarkMode();
+      }
+
+      // Add event listener to the toggle button
+      darkModeToggle.addEventListener('click', () => {
+        // Check the current state *before* toggling
+        const isDarkModeNow = document.body.classList.contains("latex-dark");
+
+        if (isDarkModeNow) {
+          disableDarkMode();
+        } else {
+          enableDarkMode();
+        }
+      });
+    });
+  </script>
+  <h2>Programs</h2>
+  <ol>
+    <li>Is It Prime?</li>
+    <li>Next Prime Number</li>
+    <li>Prime Factorization</li>
+    <li>Greatest Common Factor (Divisor)</li>
+    <li>Simplify a Fraction</li>
+    <li>Multiplying Fractions</li>
+    <li>Dividing Fractions</li>
+    <li>Mixed Number \(\leftrightarrow\) Improper Fraction</li>
+    <li>Multiplying and Dividing Mixed Numbers</li>
+    <li>Adding and Subtracting Fractions</li>
+    <li>Evaluate an Algebraic Expression</li>
+    <li>Adding and Subtracting Real Numbers</li>
+    <li>Solving Linear Equations in One Variable</li>
+    <li>Translating Percent Problems</li>
+    <li>Find Base and Percent</li>
+    <li>Solving Linear Inequalities in One Variable</li>
+    <li>Solving Compound Inequalities in One Variable</li>
+    <li>What Quadrant is the Point In?</li>
+    <li>Graph the Ordered Pair</li>
+    <li>-</li>
+    <li>-</li>
+    <li>-</li>
+    <li>-</li>
+    <li>-</li>
+  </ol>
+</div>
+</body>
+</html>
