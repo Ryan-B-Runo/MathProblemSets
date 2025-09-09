@@ -58,3 +58,6 @@ function sqrtSimplifyLaTeX(n){
     }
     return out + "\\sqrt{" + inside + "}";
 }
+
+// a list of squares up to 12^2=144
+let squares = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144];
