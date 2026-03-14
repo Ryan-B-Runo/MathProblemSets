@@ -54,8 +54,7 @@
         .addEventListener('click', () => {
             event.preventDefault()// prevent refresh when form is submitted
             let n = document.querySelector("#numProb").value;//start editing here###########################################################################
-            if (n <= 1000 && n >= 1) {// can change these
-                //algorithm here
+            if (n <= 1000 && n >= 1) {
                 for (let i = 0; i < n; i++) {
                     //problem and answer elements go in the list
                     const problem = document.createElement('li');
@@ -79,7 +78,7 @@
                     }
                 }
             } else {
-                alert("You can only generate between 1 and 1000 problems.");//change this###########################################################################
+                alert("You can only generate between 1 and 1000 problems.");
             }
         });
 </script>

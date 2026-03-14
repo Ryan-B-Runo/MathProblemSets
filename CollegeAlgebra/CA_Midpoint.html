@@ -54,7 +54,7 @@
           .addEventListener('click', () => {
             event.preventDefault()// prevent refresh when form is submitted
             let n = document.querySelector("#numProb").value;
-            if (n <= 1000 && n >= 1) {// can change these
+            if (n <= 1000 && n >= 1) {
               for (let i = 0; i < n; i++) {
                 const problem = document.createElement('li');
                 const answer = document.createElement('li');
