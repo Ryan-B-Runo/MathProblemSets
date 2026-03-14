@@ -10,5 +10,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mathjax" level="application" />
     <orderEntry type="library" name="style" level="application" />
+    <orderEntry type="library" name="style" level="application" />
+    <orderEntry type="library" name="mathjax" level="application" />
   </component>
 </module>
